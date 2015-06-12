@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html ng-app="mapsApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsmkAzCTn4vBAviGxJWwDdDnCiSfYu3KU"></script>
+
+    <script type="text/javascript" charset="utf-8" src="js/index.js"></script> 
+    
+    <style type="text/css">html,
+        body,
+        #map-page { /* specify page */
+          height: 100%;
+          margin: 0;
+          padding: 0;
+      }
+
+      #map-canvas { /* specify page */
+          height: 100%;
+          margin: 0;
+          padding: 0;
+      }
+
+      #map-page .ui-content {
+          padding: 0;
+      }
+
+      .ui-content,
+      .ui-content #full-height-div { /* divs will inherit page's height */
+      height: inherit;
+  }
+  
+</style>
+<title>Maps</title>
+</head>
+<body>
+<div data-theme="b" data-role="page" id="maps">
+      <div data-role="header">
+        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>
+        <h1>Maps</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <div ng-controller="MapController as mapCont">
+          <select id="portListSel" ng-model="mapCont.portSelected" ng-options="port.FacilityId as port.FacilityName for port in mapCont.portCordList" ng-change="mapCont.portChange(mapCont.portCordList[mapCont.portSelected-1])">
+          </select> 
+      </div>
+
+
+      <div id="map-canvas"></div>
+  </div>
+</div>
+
+
+</body>
+</html>
